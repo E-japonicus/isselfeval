@@ -109,7 +109,7 @@ $overall_avg   = tje_average($overall_records);
 </table>
 
 <form method="post" action="" name="selfeval_change_rubrics">
-	<button class="submit_button" name="change_rubrics">Formに戻る(demo)</button>
+	<button class="submit-button" name="change_rubrics">Formに戻る(demo)</button>
 </form>
 
 <!-- レーダーチャートの読み込み -->

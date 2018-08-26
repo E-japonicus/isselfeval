@@ -101,7 +101,7 @@ $last_time_records = $DB->get_record_sql($last_sql, array($USER->id, $isselfeval
 ?>
 	</tbody>
 </table>
-<button class="submit_button" name="consider_submit">変化した理由を保存する</button>
+<button class="submit-button" name="consider_submit">変化した理由を保存する</button>
 </form>
 
 <!-- form入力途中のページ遷移を制限する -->

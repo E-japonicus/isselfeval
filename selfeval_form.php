@@ -40,7 +40,7 @@
             
         </tbody>
     </table>
-    <button class="submit_button" name="rubrics_submit">自己評価結果を登録する</button>
+    <button class="submit-button" name="rubrics_submit">自己評価結果を登録する</button>
     </form>
 </div>
 
