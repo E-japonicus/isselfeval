@@ -1,0 +1,37 @@
+.this-time{
+	background: rgb(248, 220, 225);
+	padding: 1%;
+	margin: 1%;
+}
+
+.last-time{
+	background: rgb(245, 255, 101);
+	padding: 1%;
+	margin: 1%;
+}
+
+.submit-button {
+	font-size: 1.5em;
+	width: 100%;
+    display: inline-block;
+    padding: 1em 2em;
+    text-decoration: none;
+    background: #f7f7f7;
+    border-left: solid 6px #ff7c5c;/*左線*/
+    color: #ff7c5c;/*文字色*/
+    font-weight: bold;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+}
+
+.table-title{
+	text-align: center !important; 
+	vertical-align: middle !important;
+	font-size: 1.2rem;
+	font-weight: bold;
+}
+
+.table-val{
+	text-align: center !important; 
+	vertical-align: middle !important;
+	font-size: 2.5rem;
+}

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="mod/isselfeval/db" VERSION="20101203" COMMENT="XMLDB file for Moodle mod/isselfeval"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+    <TABLE NAME="isselfeval" COMMENT="About isselfeval">
+      <FIELDS>
+        <FIELD NAME="id"            TYPE="int"  LENGTH="10"   NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="course"        TYPE="int"  LENGTH="10"   NOTNULL="true" SEQUENCE="false"               COMMENT="Course infosysselfesteem activity belongs to"/>
+        <FIELD NAME="name"          TYPE="char" LENGTH="255"  NOTNULL="true" SEQUENCE="false"               COMMENT="name field for moodle instances"/>
+        <FIELD NAME="intro"         TYPE="text"               NOTNULL="true" SEQUENCE="false"               COMMENT="General introduction of the infosysselfesteem activity"/>
+        <FIELD NAME="introformat"   TYPE="int"  LENGTH="4"    NOTNULL="true" SEQUENCE="false" DEFAULT="0"   COMMENT="Format of the intro field (MOODLE, HTML, MARKDOWN...)"/>
+        <FIELD NAME="timecreated"   TYPE="int"  LENGTH="10"   NOTNULL="true" SEQUENCE="false"/>
+        <FIELD NAME="timemodified"  TYPE="int"  LENGTH="10"   NOTNULL="true" SEQUENCE="false" DEFAULT="0" />
+        <FIELD NAME="grade"         TYPE="int"  LENGTH="10"   NOTNULL="true" SEQUENCE="false" DEFAULT="100" COMMENT="The maximum grade. Can be negative to indicate the use of a scale."/>
+        <FIELD NAME="year"          TYPE="int"  LENGTH="4"    NOTNULL="true" SEQUENCE="false" DEFAULT="0"   COMMENT="year"/>
+        <FIELD NAME="subject"       TYPE="char" LENGTH="1"    NOTNULL="true" SEQUENCE="false" DEFAULT="A"   COMMENT="subject"/>
+        <FIELD NAME="times"         TYPE="int"  LENGTH="2"    NOTNULL="true" SEQUENCE="false" DEFAULT="0"   COMMENT="times"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+      <INDEXES>
+        <INDEX NAME="course" UNIQUE="false" FIELDS="course"/>
+      </INDEXES>
+    </TABLE>
+
+    <TABLE NAME="isselfeval_rubrics" COMMENT="Self assessment results">
+      <FIELDS>
+        <FIELD NAME="id"              TYPE="int" LENGTH="10" NOTNULL="true"             SEQUENCE="true"/>
+        <FIELD NAME="user_id"         TYPE="int" LENGTH="10" NOTNULL="true"             SEQUENCE="false"/>
+        <FIELD NAME="isselfeval_id"   TYPE="int" LENGTH="10" NOTNULL="true"             SEQUENCE="false"/>
+        <FIELD NAME="rubric_1"        TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+        <FIELD NAME="rubric_2"        TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+        <FIELD NAME="rubric_3"        TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+        <FIELD NAME="rubric_4"        TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+        <FIELD NAME="rubric_5"        TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+        <FIELD NAME="rubric_6"        TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+        <FIELD NAME="rubric_7"        TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+        <FIELD NAME="rubric_8"        TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+        <FIELD NAME="rubric_9"        TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+        <FIELD NAME="rubric_10"       TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+        <FIELD NAME="rubric_11"       TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+        <FIELD NAME="timecreated"     TYPE="int" LENGTH="10" NOTNULL="true"             SEQUENCE="false"/>
+        <FIELD NAME="timemodified"    TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary"         TYPE="primary"  FIELDS="id"/>
+        <KEY NAME="user_id"         TYPE="foreign"  FIELDS="user_id"        REFTABLE="user"         REFFIELDS="id"/>
+        <KEY NAME="isselfeval_id"   TYPE="foreign"  FIELDS="isselfeval_id"  REFTABLE="isselfeval"   REFFIELDS="id"/>
+      </KEYS>
+    </TABLE>
+
+    <TABLE NAME="isselfeval_consider" COMMENT="Reason why self evaluation has changed">
+      <FIELDS>
+        <FIELD NAME="id"              TYPE="int" LENGTH="10"  NOTNULL="true"  SEQUENCE="true"/>
+        <FIELD NAME="user_id"         TYPE="int" LENGTH="10"  NOTNULL="true"  SEQUENCE="false"/>
+        <FIELD NAME="isselfeval_id"   TYPE="int" LENGTH="10"  NOTNULL="true"  SEQUENCE="false"/>
+        <FIELD NAME="rubric_1"        TYPE="text"             NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="rubric_2"        TYPE="text"             NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="rubric_3"        TYPE="text"             NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="rubric_4"        TYPE="text"             NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="rubric_5"        TYPE="text"             NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="rubric_6"        TYPE="text"             NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="rubric_7"        TYPE="text"             NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="rubric_8"        TYPE="text"             NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="rubric_9"        TYPE="text"             NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="rubric_10"       TYPE="text"             NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="rubric_11"       TYPE="text"             NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="timecreated"     TYPE="int" LENGTH="10"  NOTNULL="true"  SEQUENCE="false"/>
+        <FIELD NAME="timemodified"    TYPE="int" LENGTH="10"  NOTNULL="true"  SEQUENCE="false"  DEFAULT="0" />
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary"         TYPE="primary"  FIELDS="id"/>
+        <KEY NAME="user_id"         TYPE="foreign"  FIELDS="user_id"        REFTABLE="user"         REFFIELDS="id"/>
+        <KEY NAME="isselfeval_id"   TYPE="foreign"  FIELDS="isselfeval_id"  REFTABLE="isselfeval"   REFFIELDS="id"/>
+      </KEYS>
+    </TABLE>
+
+    <TABLE NAME="isselfeval_consider_updown" COMMENT="Changes in self evaluation, up or down">
+      <FIELDS>
+        <FIELD NAME="id"                TYPE="int"  LENGTH="10"  NOTNULL="true"  SEQUENCE="true"/>
+        <FIELD NAME="user_id"           TYPE="int"  LENGTH="10"  NOTNULL="true"  SEQUENCE="false"/>
+        <FIELD NAME="isselfeval_id"     TYPE="int"  LENGTH="10"  NOTNULL="true"  SEQUENCE="false"/>
+        <FIELD NAME="consider_id"       TYPE="int"  LENGTH="10"  NOTNULL="true"  SEQUENCE="false"/>
+        <FIELD NAME="rubric_1_updown"   TYPE="char" LENGTH="4"   NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="rubric_2_updown"   TYPE="char" LENGTH="4"   NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="rubric_3_updown"   TYPE="char" LENGTH="4"   NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="rubric_4_updown"   TYPE="char" LENGTH="4"   NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="rubric_5_updown"   TYPE="char" LENGTH="4"   NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="rubric_6_updown"   TYPE="char" LENGTH="4"   NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="rubric_7_updown"   TYPE="char" LENGTH="4"   NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="rubric_8_updown"   TYPE="char" LENGTH="4"   NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="rubric_9_updown"   TYPE="char" LENGTH="4"   NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="rubric_10_updown"  TYPE="char" LENGTH="4"   NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="rubric_11_updown"  TYPE="char" LENGTH="4"   NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="timecreated"       TYPE="int"  LENGTH="10"  NOTNULL="true"  SEQUENCE="false"/>
+        <FIELD NAME="timemodified"      TYPE="int"  LENGTH="10"  NOTNULL="true"  SEQUENCE="false"  DEFAULT="0" />
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary"         TYPE="primary"  FIELDS="id"/>
+        <KEY NAME="user_id"         TYPE="foreign"  FIELDS="user_id"        REFTABLE="user"                 REFFIELDS="id"/>
+        <KEY NAME="isselfeval_id"   TYPE="foreign"  FIELDS="isselfeval_id"  REFTABLE="isselfeval"           REFFIELDS="id"/>
+        <KEY NAME="consider_id"     TYPE="foreign"  FIELDS="consider_id"    REFTABLE="isselfeval_consider"  REFFIELDS="id"/>
+      </KEYS>
+    </TABLE>
+
+  </TABLES>
+</XMLDB>
