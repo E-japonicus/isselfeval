@@ -41,6 +41,7 @@ $string['isselfeval'] = 'isselfeval';
 $string['pluginadministration'] = 'isselfeval administration';
 $string['pluginname'] = 'isselfeval';
 
+// 良問の基準
 $string['good_quiz_help'] = '
 ・解説に答えを導く計算過程が書かれており、不正解した学習者が見てわかりやすい解説になっているか？<br>
 ・著作権を侵害していないか？（参考文献が記載されているか？）<br>
@@ -51,6 +52,7 @@ $string['good_quiz_help'] = '
 　（明らかに誤答とわかる選択肢はないか？）
 ';
 
+// 演習目標
 $string['exercise_goal_help'] = '
 ・行列の分野の問題を作成する<br>
 ・正答率70％の難易度の問題を作成する';
@@ -82,8 +84,8 @@ $string['rubric[3]_score2'] = '<span class="highlight">今までの作問演�
 $string['rubric[3]_score3'] = '';
 $string['rubric[3]_ability'] = '思考力[推論,仮説]：知識や情報に基づく仮説の形成，<br />判断力：出題箇所の比較・決定';
 
-$string['rubric[4]']        = '良問の基準に適した問題を作ることができる';
 // 良問の基準
+$string['rubric[4]']        = '良問の基準に適した問題を作ることができる';
 $string['rubric[4]_help']   = '';
 $string['rubric[4]_suffix'] = '';
 $string['rubric[4]_score0'] = '';
@@ -101,8 +103,8 @@ $string['rubric[5]_score2'] = 'グループメンバーからの<span class="hig
 $string['rubric[5]_score3'] = '';
 $string['rubric[5]_ability'] = '思考力[作問を通じた創造的思考力]：出題箇所の問題化，<br />表現力：グループセッションにおける意思疎通、表現，<br />表現力：作問時における文法的表現（記号や図表なども含む），<br />三要素の中のひとつである多様性の向上';
 
-$string['rubric[6]']        = 'グループメンバーの問題から最も良問に適していると思われる問題の選択';
 // 良問の基準
+$string['rubric[6]']        = 'グループメンバーの問題から最も良問に適していると思われる問題の選択';
 $string['rubric[6]_help']   = '';
 $string['rubric[6]_suffix'] = '自分が選んだ問題が良問の基準を';
 $string['rubric[6]_score0'] = '';
@@ -147,6 +149,7 @@ $string['rubric[10]_score2'] = '投稿した際に、<span class="highlight">自
 $string['rubric[10]_score3'] = '';
 $string['rubric[10]_ability'] = '表現力：グループセッションにおける意思疎通、表現';
 
+// 演習目標
 $string['rubric[11]']        = '演習目標に則した問題の選択・決定ができる';
 $string['rubric[11]_help']   = '';
 $string['rubric[11]_suffix'] = '演習目標の出題分野と目標とする正答率の';

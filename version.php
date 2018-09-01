@@ -28,8 +28,8 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'mod_isselfeval';
-$plugin->version = 2018082602;
-$plugin->release = 'v1.1';
+$plugin->version = 2018090101;
+$plugin->release = 'v1.2';
 $plugin->requires = 2014051200;
 $plugin->maturity = MATURITY_ALPHA;
 $plugin->cron = 0;

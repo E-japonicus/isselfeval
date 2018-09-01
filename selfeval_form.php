@@ -2,6 +2,19 @@
 <script type="text/javascript" src="./javascript/jquery-3.3.1.min.js"></script>
 
 <div>
+<table class="table table-bordered">
+	<tbody>
+		<tr>
+			<th style="text-align:center" width="50%">良問の基準</th>
+			<th style="text-align:center" width="50%">演習目標</th>
+		</tr>
+		<tr>
+			<td><?php echo get_string('good_quiz_help', 'isselfeval')?></td>
+			<td><?php echo get_string('exercise_goal_help', 'isselfeval')?></td>
+		</tr>
+	</tbody>
+</table>
+
 <form method="post" action="" name="selfeval_rubrics">
     <table class="table table-bordered table-checked" style="height:200px;">
         <tbody>
