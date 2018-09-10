@@ -28,7 +28,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$string['modulename'] = '自己評価モジュール';
+$string['modulename'] = '自己評価モジュール ver2';
 $string['modulenameplural'] = '自己評価モジュール';
 $string['modulename_help'] = '学習者がルーブリックを基に自己評価を行うモジュールです。';
 $string['isselfeval:addinstance'] = 'Add a new isselfeval';
