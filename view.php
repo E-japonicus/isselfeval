@@ -87,37 +87,43 @@ $teacher = array_filter($roles, function ($role) {
 // DB登録の読み込み
 include_once './locallib.php';
 
-// demo---------------------------------------------------------------------
-if (isset($_POST['consider_submit'])) :
-    // considerの登録ボタンが押された時
+if (count($teacher) > 0):
+    // if teacher => teacher_view
+    require_once("{$CFG->dirroot}/mod/isselfeval/teachers_view.php");
 
-    // POSTされたデータの処理
-    $records = new stdClass(); 
-    $records->user_id = $USER->id;
-    $records->isselfeval_id = $isselfeval->id;
-    for ($i=1; $i < 12; $i++) {
-        $records->{"rubric_{$i}"}           = optional_param("rubric_{$i}",         NULL, PARAM_TEXT);
-        $records->{"rubric_{$i}_updown"}    = optional_param("rubric_{$i}_updown",  NULL, PARAM_TEXT);
-    }
+else:
+    // not teacher
 
-    // considerのDB登録
-    if (isselfeval_consider_upsert($records)):
-        // success upsert
-    else:
-        // failed
-    endif;
-    
-    // consider_updownの登録
-    if (isselfeval_consider_updown_upsert($records)):
-        // success upsert
-    else:
-        // failed
-    endif;
+    if (isset($_POST['consider_submit'])) :
+        // considerの登録ボタンが押された時
 
-    // resultの表示
-    require_once("{$CFG->dirroot}/mod/isselfeval/selfeval_result.php");
+        // POSTされたデータの処理
+        $records = new stdClass();
+        $records->user_id = $USER->id;
+        $records->isselfeval_id = $isselfeval->id;
+        for ($i=1; $i < 12; $i++) {
+            $records->{"rubric_{$i}"}           = optional_param("rubric_{$i}",         NULL, PARAM_TEXT);
+            $records->{"rubric_{$i}_updown"}    = optional_param("rubric_{$i}_updown",  NULL, PARAM_TEXT);
+        }
 
-elseif (isset($_POST['rubrics_submit'])):
+        // considerのDB登録
+        if (isselfeval_consider_upsert($records)):
+            // success upsert
+        else:
+            // failed
+        endif;
+        
+        // consider_updownの登録
+        if (isselfeval_consider_updown_upsert($records)):
+            // success upsert
+        else:
+            // failed
+        endif;
+
+        // resultの表示
+        require_once("{$CFG->dirroot}/mod/isselfeval/selfeval_result.php");
+
+    elseif(isset($_POST['rubrics_submit'])):
         // rubricの登録ボタンが押された時
 
         // POSTされたデータの処理
@@ -150,102 +156,18 @@ elseif (isset($_POST['rubrics_submit'])):
 
         endif;
 
-elseif(isset($_POST['change_rubrics'])):
-    $DB->delete_records('isselfeval_rubrics',   $composite_key);
-    $DB->delete_records('isselfeval_consider',  $composite_key);
+    elseif($DB->get_record('isselfeval_rubrics', $composite_key)):
+        // 既にDBにrubricsが登録してある場合
+        // resultの表示
+        require_once("{$CFG->dirroot}/mod/isselfeval/selfeval_result.php");
 
-    require_once("{$CFG->dirroot}/mod/isselfeval/selfeval_form.php");
+    else:
+        // それ以外の場合
+        // formの表示
+        require_once("{$CFG->dirroot}/mod/isselfeval/selfeval_form.php");
 
-else:
-    // それ以外の場合
-    // formの表示
-    require_once("{$CFG->dirroot}/mod/isselfeval/selfeval_form.php");
-
+    endif;
 endif;
-
-// demo---------------------------------------------------------------------
-
-// if (count($teacher) > 0):
-//     // if teacher => teacher_view
-//     require_once("{$CFG->dirroot}/mod/isselfeval/teachers_view.php");
-
-// else:
-//     // not teacher
-
-//     if (isset($_POST['consider_submit'])) :
-//         // considerの登録ボタンが押された時
-
-//         // POSTされたデータの処理
-//         $records = new stdClass();
-//         $records->user_id = $USER->id;
-//         $records->isselfeval_id = $isselfeval->id;
-//         for ($i=1; $i < 12; $i++) {
-//             $records->{"rubric_{$i}"}           = optional_param("rubric_{$i}",         NULL, PARAM_TEXT);
-//             $records->{"rubric_{$i}_updown"}    = optional_param("rubric_{$i}_updown",  NULL, PARAM_TEXT);
-//         }
-
-//         // considerのDB登録
-//         if (isselfeval_consider_upsert($records)):
-//             // success upsert
-//         else:
-//             // failed
-//         endif;
-        
-//         // consider_updownの登録
-//         if (isselfeval_consider_updown_upsert($records)):
-//             // success upsert
-//         else:
-//             // failed
-//         endif;
-
-//         // resultの表示
-//         require_once("{$CFG->dirroot}/mod/isselfeval/selfeval_result.php");
-
-//     elseif(isset($_POST['rubrics_submit'])):
-//         // rubricの登録ボタンが押された時
-
-//         // POSTされたデータの処理
-//         $records = new stdClass();
-//         $records->user_id = $USER->id;
-//         $records->isselfeval_id = $isselfeval->id;
-//         foreach ($_POST as $name => $value):
-//             $records->$name = $value;
-//         endforeach;
-        
-//         // rubricsのDB登録
-//         if (isselfeval_rubrics_upsert($records)):
-//             // success upsert
-//         else:
-//             // failed
-//         endif;
-
-//         // considerの登録を行うかどうか
-//         $consider_flg_sql = 'SELECT * FROM {isselfeval_rubrics} WHERE user_id = ? AND isselfeval_id = (SELECT id from {isselfeval} WHERE year = ? AND subject = ? AND times < ? ORDER BY times DESC LIMIT 1);';
-//         $consider_flg     = $DB->get_record_sql($consider_flg_sql, array($USER->id, $isselfeval->year, $isselfeval->subject, $isselfeval->times));
-//         if(!$consider_flg):
-//             // 初回の場合
-//             // resultの表示
-//             require_once("{$CFG->dirroot}/mod/isselfeval/selfeval_result.php");
-        
-//         else:
-//             // 2回目以降の場合
-//             // considerの表示
-//             require_once("{$CFG->dirroot}/mod/isselfeval/selfeval_consider.php");
-
-//         endif;
-
-//     elseif($DB->get_record('isselfeval_rubrics', $composite_key)):
-//         // 既にDBにrubricsが登録してある場合
-//         // resultの表示
-//         require_once("{$CFG->dirroot}/mod/isselfeval/selfeval_result.php");
-
-//     else:
-//         // それ以外の場合
-//         // formの表示
-//         require_once("{$CFG->dirroot}/mod/isselfeval/selfeval_form.php");
-
-//     endif;
-// endif;
 
 // Finish the page.
 echo $OUTPUT->footer();

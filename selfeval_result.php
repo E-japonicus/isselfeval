@@ -108,10 +108,6 @@ $overall_avg   = tje_average($overall_records);
 	</tbody>
 </table>
 
-<form method="post" action="" name="selfeval_change_rubrics">
-	<button class="submit-button" name="change_rubrics">Formに戻る(demo)</button>
-</form>
-
 <!-- レーダーチャートの読み込み -->
 <?php include_once './create_radar_chart.php' ?>
 <!-- 円グラフの読み込み -->
