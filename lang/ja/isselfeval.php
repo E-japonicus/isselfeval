@@ -28,8 +28,8 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$string['modulename'] = '自己評価モジュール ver2';
-$string['modulenameplural'] = '自己評価モジュール';
+$string['modulename'] = '自己評価モジュール(H30後期~)';
+$string['modulenameplural'] = '自己評価モジュール(H30後期~)';
 $string['modulename_help'] = '学習者がルーブリックを基に自己評価を行うモジュールです。';
 $string['isselfeval:addinstance'] = 'Add a new isselfeval';
 $string['isselfeval:submit'] = 'Submit isselfeval';
@@ -54,7 +54,7 @@ $string['good_quiz_help'] = '
 
 // 演習目標
 $string['exercise_goal_help'] = '
-・行列の分野の問題を作成する<br>
+・順列の分野の問題を作成する<br>
 ・正答率70％の難易度の問題を作成する';
 
 $string['rubric[1]']        = '作問課題に関連する単元や内容を列挙する';
