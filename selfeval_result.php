@@ -108,6 +108,19 @@ $overall_avg   = tje_average($overall_records);
 	</tbody>
 </table>
 
+<table class="table table-bordered">
+	<tbody>
+		<tr>
+			<th style="text-align:center" width="50%">良問の基準</th>
+			<th style="text-align:center" width="50%">演習目標</th>
+		</tr>
+		<tr>
+			<td><?php echo get_string('good_quiz_help', 'isselfeval')?></td>
+			<td><?php echo nl2br($isselfeval->target);?></td>
+		</tr>
+	</tbody>
+</table>
+
 <!-- レーダーチャートの読み込み -->
 <?php include_once './create_radar_chart.php' ?>
 <!-- 円グラフの読み込み -->

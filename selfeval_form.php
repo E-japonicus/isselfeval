@@ -10,7 +10,7 @@
 		</tr>
 		<tr>
 			<td><?php echo get_string('good_quiz_help', 'isselfeval')?></td>
-			<td><?php echo get_string('exercise_goal_help', 'isselfeval')?></td>
+			<td><?php echo nl2br($isselfeval->target);?></td>
 		</tr>
 	</tbody>
 </table>

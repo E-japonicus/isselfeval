@@ -98,5 +98,13 @@ class mod_isselfeval_mod_form extends moodleform_mod {
         $mform->setType('times', PARAM_INT);
         $mform->setDefault('times', 1);
         $mform->addRule('times', null, 'required', null, 'client');
+
+        $mform->addElement('textarea', 'target', '演習目標', array(
+            'cols' => 70,
+            'rows' => 5,
+            'placeholder' => "演習の分野や目標とする正答率を記入してください。"
+        ));
+        $mform->setType('target', PARAM_TEXT);
+        $mform->addRule('target', null, 'required', null, 'client');
     }
 }

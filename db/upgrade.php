@@ -259,5 +259,20 @@ function xmldb_isselfeval_upgrade($oldversion) {
     //     upgrade_mod_savepoint(true, 2018082504, 'isselfeval');
     // }
 
+    if ($oldversion < 2018110701) {
+
+        // Define field target to be added to isselfeval.
+        $table = new xmldb_table('isselfeval');
+        $field = new xmldb_field('target', XMLDB_TYPE_TEXT, null, null, null, null, null, 'times');
+
+        // Conditionally launch add field target.
+        if (!$dbman->field_exists($table, $field)) {
+            $dbman->add_field($table, $field);
+        }
+
+        // Isselfeval savepoint reached.
+        upgrade_mod_savepoint(true, 2018110701, 'isselfeval');
+    }
+
     return true;
 }

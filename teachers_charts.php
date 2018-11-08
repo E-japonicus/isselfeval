@@ -11,7 +11,7 @@ $overall_avg   = tje_average($overall_records);
 <table class="table table-bordered">
 	<tbody>
 		<tr>
-			<td style="text-align:center;" width="40%" rowspan="5"><canvas id="graph_radar" width=“30” height=“30”></canvas></td>
+			<td style="text-align:center;" width="40%" rowspan="5"><canvas id="graph-radar" width=“30” height=“30”></canvas></td>
 			<td style="text-align:center;" width="10%"></td>
 			<th class="table-title" width="10%">全体の平均</th>
 		</tr>
@@ -33,12 +33,6 @@ $overall_avg   = tje_average($overall_records);
 		</tr>
 	</tbody>
 </table>
-
-<h1>あなたの結果と全体の傾向</h1>
-<div style="padding: 20px 0px;">
-今回のあなたの結果→<span class="this-time">&emsp;&emsp;</span>
-前回のあなたの結果→<span class="last-time">前回</span>
-</div>
 
 <table class="table table-bordered">
 	<tbody>
@@ -64,7 +58,7 @@ $overall_avg   = tje_average($overall_records);
 				</td>
 				<?php endfor; ?>
 				<!-- グラフの描写 -->
-				<td><?php echo "<canvas height='180' id='rubric_graph_{$i}'></canvas>"?></td>
+				<td><?php echo "<canvas height='180' id='rubric-graph-{$i}'></canvas>"?></td>
 			</tr>			
 		<?php endfor; ?>
 		
