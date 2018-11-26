@@ -104,7 +104,7 @@ for ($i=1; $i <= 11; $i++) {
             <?php endfor;?>
             <td>
                 <textarea name="<?php echo "rubric_{$down_key}"?>" rows="5" style="width:90%" placeholder="自己評価が向上した理由を記入してください" required></textarea>
-                <input type="hidden" name="<?php echo "rubric_{$down_key}_updown"?>" value="up">
+                <input type="hidden" name="<?php echo "rubric_{$down_key}_updown"?>" value="down">
             </td>
     <?php endforeach;?>
     </tbody>
