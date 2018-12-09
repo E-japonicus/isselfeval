@@ -1,8 +1,11 @@
+
 <link rel="stylesheet" type="text/css" href="./style.css">
 <script type="text/javascript" src="./javascript/jquery-3.3.1.min.js"></script>
 
+
 <div>
-<table class="table table-bordered">
+
+<table class="table table-bordered sticky">
 	<tbody>
 		<tr>
 			<th style="text-align:center" width="50%">良問の基準</th>
