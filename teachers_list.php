@@ -1,4 +1,5 @@
 <?php
+// 全てのレコードを取得する
 $rubric_records = $DB->get_records_sql(
     'SELECT A.*, concat({user}.lastname, " ", {user}.firstname) name, {user}.username
     from (select * from {isselfeval_rubrics} where isselfeval_id = ?) A 

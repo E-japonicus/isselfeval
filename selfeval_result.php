@@ -108,11 +108,11 @@ $overall_avg   = tje_average($overall_records);
 	</tbody>
 </table>
 
-<table class="table table-bordered">
+<table class="table table-bordered" style="background-color:#ffffea">
 	<tbody>
 		<tr>
-			<th style="text-align:center" width="50%">良問の基準</th>
-			<th style="text-align:center" width="50%">演習目標</th>
+			<th style="text-align:center" width="50%">相互評価用チェックリスト</th>
+			<th style="text-align:center" width="50%">演習目標(作問の要件)</th>
 		</tr>
 		<tr>
 			<td><?php echo get_string('good_quiz_help', 'isselfeval')?></td>

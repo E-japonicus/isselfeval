@@ -1,4 +1,5 @@
 <?php
+// 値が変化したルーブリックのレコードを取得
 $consider_records_sql = 
     'SELECT CO.*, {isselfeval_consider_updown}.*, concat({user}.lastname, " ", {user}.firstname) name, {user}.username 
     FROM ((SELECT * from {isselfeval_consider} where isselfeval_id = ?) CO
