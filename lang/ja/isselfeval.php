@@ -41,7 +41,7 @@ $string['isselfeval'] = 'isselfeval';
 $string['pluginadministration'] = 'isselfeval administration';
 $string['pluginname'] = 'isselfeval';
 
-// 良問の基準
+// 相互評価用チェックリスト
 $string['good_quiz_help'] = '
 ・解説に答えを導く計算過程が書かれており、不正解した学習者が見てわかりやすい解説になっているか？<br>
 ・著作権を侵害していないか？（参考文献が記載されているか？）<br>
@@ -53,12 +53,7 @@ $string['good_quiz_help'] = '
 ';
 
 // 演習目標
-$string['exercise_goal_help'] = '
-・順列の分野の問題を作成する<br>
-・正答率70％の難易度の問題を作成する';
-
-//<span class="highlight">
-//</span>
+$string['exercise_goal_help'] = '';
 
 $string['rubric[1]']        = '作問課題に関連する単元や内容を考察する';
 $string['rubric[1]_help']   = '';
@@ -94,7 +89,7 @@ $string['rubric[4]_score0'] = '既存の問題の<span class="highlight">一部�
 $string['rubric[4]_score1'] = '既存の問題を参考にし、<span class="highlight">類似した問題(同じ解法で解答できる問題等)を作成した</span>';
 $string['rubric[4]_score2'] = '既存の問題を参考にし、<span class="highlight">大部分を自分自身で考えて問題を作成した</span>';
 $string['rubric[4]_score3'] = '問題全てを自分で考え、<span class="highlight">既存にはないオリジナルの問題を作成した</span>';
-$string['rubric[4]_ability'] = '思考力[作問を通じた創造的思考力]：出題箇所の問題化';
+$string['rubric[4]_ability'] = '思考力[作問を通じた創造的思考力]：出題箇所の問題化、<br />表現力：作問時における文法的表現';
 
 $string['rubric[5]']        = '作問の要件(出題範囲と正答率)を満たす問題を作成できる';
 $string['rubric[5]_help']   = '';
