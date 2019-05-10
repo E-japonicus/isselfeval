@@ -85,10 +85,10 @@ $string['rubric[3]_ability'] = '思考力[推論,仮説]：知識や情報に基
 $string['rubric[4]']        = '自分で工夫した問題を作成することができる';
 $string['rubric[4]_help']   = '';
 $string['rubric[4]_suffix'] = '';
-$string['rubric[4]_score0'] = '既存の問題の<span class="highlight">一部のみ(数字だけを変える等)を修正して問題を作成した</span>';
-$string['rubric[4]_score1'] = '既存の問題を参考にし、<span class="highlight">類似した問題(同じ解法で解答できる問題等)を作成した</span>';
-$string['rubric[4]_score2'] = '既存の問題を参考にし、<span class="highlight">大部分を自分自身で考えて問題を作成した</span>';
-$string['rubric[4]_score3'] = '問題全てを自分で考え、<span class="highlight">既存にはないオリジナルの問題を作成した</span>';
+$string['rubric[4]_score0'] = '問題(選択肢、解説を含む)を<span class="highlight">作成しなかった</span>';
+$string['rubric[4]_score1'] = '作成した問題は、既存の問題の<span class="highlight">一部のみ(数字だけを変える等)を修正した問題だった</span>';
+$string['rubric[4]_score2'] = '作成した問題は、既存の問題に<span class="highlight">類似した問題(同じ解法で解答できる問題等)だった</span>';
+$string['rubric[4]_score3'] = '作成した問題は、既存の問題を参考にし、<span class="highlight">大部分を自分自身で考えた問題だった</span>';
 $string['rubric[4]_ability'] = '思考力[作問を通じた創造的思考力]：出題箇所の問題化、<br />表現力：作問時における文法的表現';
 
 $string['rubric[5]']        = '作問の要件(出題範囲と正答率)を満たす問題を作成できる';
