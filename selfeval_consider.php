@@ -17,11 +17,27 @@ for ($i=1; $i <= 11; $i++) {
         $down_rubrics[] = $i;
     }
 }
+
+// considerが登録されている場合
+$consider = $DB->get_record('isselfeval_consider', $composite_key);
 ?>
 
 <link rel="stylesheet" type="text/css" href="./style.css">
 <!-- ページ遷移制限のためのjQueryの読み込み -->
 <script type="text/javascript" src="./javascript/jquery-3.3.1.min.js"></script>
+
+<table class="table table-bordered sticky" style="background-color:#fcfff9">
+	<tbody>
+		<tr>
+			<th style="text-align:center" width="50%">相互評価用チェックリスト</th>
+			<th style="text-align:center" width="50%">演習目標(作問の要件)</th>
+		</tr>
+		<tr>
+			<td><?php echo get_string('good_quiz_help', 'isselfeval')?></td>
+			<td><?php echo nl2br($isselfeval->target);?></td>
+		</tr>
+	</tbody>
+</table>
 
 <div style="padding: 20px 0px;">
 今回のあなたの結果→<span class="this-time">&emsp;&emsp;</span>
@@ -62,7 +78,7 @@ for ($i=1; $i <= 11; $i++) {
             </td>
             <?php endfor;?>
             <td>
-                <textarea name="<?php echo "rubric_{$up_key}"?>" rows="5" style="width:90%" placeholder="自己評価が向上した理由を記入してください" required></textarea>
+                <textarea name="<?php echo "rubric_{$up_key}"?>" rows="5" style="width:90%" placeholder="自己評価が向上した理由を記入してください" required><?php if (isset($consider->{"rubric_{$up_key}"})) { echo $consider->{"rubric_{$up_key}"};}?></textarea>
                 <input type="hidden" name="<?php echo "rubric_{$up_key}_updown"?>" value="up">
             </td>
     <?php endforeach;?>
@@ -103,7 +119,7 @@ for ($i=1; $i <= 11; $i++) {
             </td>
             <?php endfor;?>
             <td>
-                <textarea name="<?php echo "rubric_{$down_key}"?>" rows="5" style="width:90%" placeholder="自己評価が向上した理由を記入してください" required></textarea>
+                <textarea name="<?php echo "rubric_{$down_key}"?>" rows="5" style="width:90%" placeholder="自己評価が向上した理由を記入してください" required><?php if (isset($consider->{"rubric_{$down_key}"})) { echo $consider->{"rubric_{$down_key}"};}?></textarea>
                 <input type="hidden" name="<?php echo "rubric_{$down_key}_updown"?>" value="down">
             </td>
     <?php endforeach;?>

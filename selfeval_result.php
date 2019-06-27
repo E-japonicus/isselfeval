@@ -121,6 +121,12 @@ $overall_avg   = tje_average($overall_records);
 	</tbody>
 </table>
 
+<?php if ($last_time_records) :?>
+	<form method="post" action="" name="selfeval_consider_edit">
+		<button class="submit-button" name="consider_edit">自己評価が変化した理由を編集する</button>
+	</form>
+<?php endif;?>
+
 <!-- レーダーチャートの読み込み -->
 <?php include_once './create_radar_chart.php' ?>
 <!-- 円グラフの読み込み -->

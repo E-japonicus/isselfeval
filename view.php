@@ -93,8 +93,11 @@ if (count($teacher) > 0):
 
 else:
     // not teacher
+    if (isset($_POST['consider_edit'])) :
+        // consider_editのボタンが押されたとき
+        require_once("{$CFG->dirroot}/mod/isselfeval/selfeval_consider.php");
 
-    if (isset($_POST['consider_submit'])) :
+    elseif (isset($_POST['consider_submit'])) :
         // considerの登録ボタンが押された時
 
         // POSTされたデータの処理
