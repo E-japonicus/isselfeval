@@ -19,9 +19,10 @@ $overall_avg   = tje_average($overall_records);
 ?>
 
 <link rel="stylesheet" type="text/css" href="./style.css">
+<script type="text/javascript" src="./javascript/jquery-3.3.1.min.js"></script>
+<script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
 <!-- グラフのライブラリの読み込み -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
-
 
 <h1>レーダーチャート</h1>
 <table class="table table-bordered">
@@ -67,7 +68,7 @@ $overall_avg   = tje_average($overall_records);
 </div>
 
 <table class="table table-bordered">
-	<tbody>
+	<thead class="thead">
 		<tr>
 			<th style="text-align:center" rowspan="2" width="15%">規準</th>
 			<th style="text-align:center" colspan="4">基準</th>
@@ -80,40 +81,44 @@ $overall_avg   = tje_average($overall_records);
 			<th style="text-align:center" width="15%">レベル２</th>
 			<th style="text-align:center" width="15%">レベル３</th>
 		</tr>
-		<?php for ($i=1; $i <= 11 ; $i++): ?>
-			<tr>
-				<!-- <th width="2%"><?php echo $i ?></th> -->
-				<th><?php echo get_string("rubric[{$i}]", 'isselfeval')?></th>
-				<?php for ($j=0; $j < 4; $j++) : ?>
-				<!-- ルーブリックの取得 -->
-				<?php ${"dis_rubric_".$j} = (get_string("rubric[{$i}]_score{$j}", 'isselfeval') === '') ? '' : get_string("rubric[{$i}]_suffix", 'isselfeval').get_string("rubric[{$i}]_score{$j}", 'isselfeval') ?>
+	</thead>
+	<tbody>
+	<?php for ($i=1; $i <= 11 ; $i++): ?>
+		<tr>
+			<th>
+				<?php echo get_string("rubric[{$i}]", 'isselfeval') ?>
+			</th>
+			<?php for ($j=0; $j < 4; $j++) : ?>
 				<!-- 今回の結果のセルの色を変える -->
 				<?php $this_time_class = ($this_time_records->{"rubric_{$i}"} === "{$j}") ? 'this-time' : '' ?>
 				<!-- 前回の結果のspanを表示 -->
 				<?php $last_time_label =  ($last_time_records->{"rubric_{$i}"} === "{$j}") ? '</br></br><span class="last-time">前回の結果</span>' : '' ?>
 
 				<td class=<?php echo $this_time_class ?>>
-					<?php echo ${"dis_rubric_".$j} ?>
+					<?php echo get_string("rubric[{$i}]_score{$j}", 'isselfeval') ?>
 					<?php echo $last_time_label ?>
 				</td>
-				<?php endfor; ?>
-                <td>
-					<?php echo $consider_records->{"rubric_{$i}"} ?>
-				</td>
+			<?php endfor; ?>
+			<td>
+				<?php echo $consider_records->{"rubric_{$i}"} ?>
+			</td>
+			<td>
 				<!-- グラフの描写 -->
-				<td><?php echo "<canvas height='180' id='rubric-graph-{$i}'></canvas>"?></td>
-			</tr>			
-		<?php endfor; ?>
-		
+				<?php echo "<canvas height='180' id='rubric-graph-{$i}'></canvas>"?>
+			</td>
+		</tr>			
+	<?php endfor; ?>
 	</tbody>
 </table>
 
-<table class="table table-bordered" style="background-color:#ffffea">
-	<tbody>
+<table class="table table-bordered" style="background-color:#fcfff9">
+	<thead>
 		<tr>
 			<th style="text-align:center" width="50%">相互評価用チェックリスト</th>
 			<th style="text-align:center" width="50%">演習目標(作問の要件)</th>
 		</tr>
+	</thead>
+	<tbody>
 		<tr>
 			<td><?php echo get_string('good_quiz_help', 'isselfeval')?></td>
 			<td><?php echo nl2br($isselfeval->target);?></td>
@@ -122,9 +127,9 @@ $overall_avg   = tje_average($overall_records);
 </table>
 
 <?php if ($last_time_records) :?>
-	<form method="post" action="" name="selfeval_consider_edit">
-		<button class="submit-button" name="consider_edit">自己評価が変化した理由を編集する</button>
-	</form>
+<form method="post" action="" name="selfeval_consider_edit">
+	<button class="submit-button" name="consider_edit">自己評価が変化した理由を編集する</button>
+</form>
 <?php endif;?>
 
 <!-- レーダーチャートの読み込み -->

@@ -23,21 +23,25 @@ $consider = $DB->get_record('isselfeval_consider', $composite_key);
 ?>
 
 <link rel="stylesheet" type="text/css" href="./style.css">
-<!-- ページ遷移制限のためのjQueryの読み込み -->
 <script type="text/javascript" src="./javascript/jquery-3.3.1.min.js"></script>
+<script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
 
-<table class="table table-bordered sticky" style="background-color:#fcfff9">
-	<tbody>
-		<tr>
-			<th style="text-align:center" width="50%">相互評価用チェックリスト</th>
-			<th style="text-align:center" width="50%">演習目標(作問の要件)</th>
-		</tr>
-		<tr>
-			<td><?php echo get_string('good_quiz_help', 'isselfeval')?></td>
-			<td><?php echo nl2br($isselfeval->target);?></td>
-		</tr>
-	</tbody>
-</table>
+<div class="sticky">
+    <table class="table table-bordered" style="background-color:#fcfff9">
+        <thead>
+            <tr>
+                <th style="text-align:center" width="50%">相互評価用チェックリスト</th>
+                <th style="text-align:center" width="50%">演習目標(作問の要件)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><?php echo get_string('good_quiz_help', 'isselfeval')?></td>
+                <td><?php echo nl2br($isselfeval->target);?></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 <div style="padding: 20px 0px;">
 今回のあなたの結果→<span class="this-time">&emsp;&emsp;</span>
@@ -48,7 +52,7 @@ $consider = $DB->get_record('isselfeval_consider', $composite_key);
 <?php if(!empty($up_rubrics)):?>
 <h1>前回から自己評価が向上した理由の考察</h1>
 <table class="table table-bordered">
-    <tbody>
+    <thead class="thead">
         <tr>
 			<th style="text-align:center" rowspan="2" width="15%">規準</th>
 			<th style="text-align:center" colspan="4">基準</th>
@@ -60,20 +64,20 @@ $consider = $DB->get_record('isselfeval_consider', $composite_key);
 			<th style="text-align:center" width="15%">レベル2</th>
 			<th style="text-align:center" width="15%">レベル3</th>
 		</tr>
+    </thead>
+    <tbody>
     <?php foreach ($up_rubrics as $up_key) :?>
         <tr height="150">
             <th>
                 <?php echo get_string("rubric[{$up_key}]", 'isselfeval')?>
             </th>
             <?php for ($j=0; $j < 4; $j++) :?>
-            <!-- ルーブリックの取得 -->
-            <?php ${"dis_rubric_".$j} = (get_string("rubric[{$up_key}]_score{$j}", 'isselfeval') === '') ? '' : get_string("rubric[{$up_key}]_suffix", 'isselfeval').get_string("rubric[{$up_key}]_score{$j}", 'isselfeval') ?>
             <!-- 今回の結果のセルの色を変える -->
 			<?php $this_time_class = ($this_time_records->{"rubric_{$up_key}"} === "{$j}") ? 'this-time' : '' ?>
             <!-- 前回の結果のspanを表示 -->
 			<?php $last_time_label =  ($last_time_records->{"rubric_{$up_key}"} === "{$j}") ? '</br></br><span class="last-time">前回の結果</span>' : '' ?>
             <td class=<?php echo $this_time_class ?>>
-                <?php echo ${"dis_rubric_".$j} ?>
+                <?php echo get_string("rubric[{$up_key}]_score{$j}", 'isselfeval') ?>
                 <?php echo $last_time_label ?>
             </td>
             <?php endfor;?>
@@ -89,7 +93,7 @@ $consider = $DB->get_record('isselfeval_consider', $composite_key);
 <?php if(!empty($down_rubrics)):?>
 <h1>前回から自己評価が低下した理由の考察</h1>
 <table class="table table-bordered">
-    <tbody>
+    <thead class="thead">
         <tr>
 			<th style="text-align:center" rowspan="2" width="15%">規準</th>
 			<th style="text-align:center" colspan="4">基準</th>
@@ -101,20 +105,20 @@ $consider = $DB->get_record('isselfeval_consider', $composite_key);
 			<th style="text-align:center" width="15%">レベル2</th>
 			<th style="text-align:center" width="15%">レベル3</th>
 		</tr>
+    </thead>
+    <tbody>
     <?php foreach ($down_rubrics as $down_key) :?>
         <tr height="150">
             <th>
                 <?php echo get_string("rubric[{$down_key}]", 'isselfeval')?>
             </th>
             <?php for ($j=0; $j < 4; $j++) :?>
-            <!-- ルーブリックの取得 -->
-            <?php ${"dis_rubric_".$j} = (get_string("rubric[{$down_key}]_score{$j}", 'isselfeval') === '') ? '' : get_string("rubric[{$down_key}]_suffix", 'isselfeval').get_string("rubric[{$down_key}]_score{$j}", 'isselfeval') ?>
             <!-- 今回の結果のセルの色を変える -->
 			<?php $this_time_class = ($this_time_records->{"rubric_{$down_key}"} === "{$j}") ? 'this-time' : '' ?>
             <!-- 前回の結果のspanを表示 -->
 			<?php $last_time_label =  ($last_time_records->{"rubric_{$down_key}"} === "{$j}") ? '</br></br><span class="last-time">前回の結果</span>' : '' ?>
             <td class=<?php echo $this_time_class ?>>
-                <?php echo ${"dis_rubric_".$j} ?>
+                <?php echo get_string("rubric[{$down_key}]_score{$j}", 'isselfeval') ?>
                 <?php echo $last_time_label ?>
             </td>
             <?php endfor;?>
