@@ -8,42 +8,29 @@ $consider_records_sql =
 $consider_records = $DB->get_records_sql($consider_records_sql, array($isselfeval->id));
 ?>
 
-<div>
-<?php
-for ($n=1; $n < 12; $n++) :
-?>
-<span style="font-size: 2em;"><?php echo "rubric_".$n ?></span>
 <table class="table table-striped">
-    <tr>
-        <th width="10%">名前</th>
-        <th width="10%">ユーザー名</th>
-        <th width="10%">UP_DOWN</th>
-        <th width="70%">理由</th>
-    </tr>
-    <?php
-    foreach ($consider_records as $record) :
-    ?>
-    <tr>
-        <td>
-            <?php echo $record->name; ?>
-        </td>
-        <td>
-            <?php echo $record->username; ?>
-        </td>
-        <td>
-             <?php echo $record->{"rubric_{$n}_updown"}; ?>
-        </td>
-        <td>
-             <?php echo $record->{"rubric_{$n}"}; ?>
-        </td>
-    </tr>
-    <?php
-    endforeach;
-    ?>
+    <thead>
+        <tr>
+            <th width="10%">No.</th>
+            <th width="10%">名前</th>
+            <th width="10%">ユーザー名</th>
+            <th width="10%">UP_DOWN</th>
+            <th width="60%">理由</th>
+        </tr>
+    </thead>
+    <?php for ($i=1; $i <= 11; $i++) : ?>
+    <?php foreach ($consider_records as $record) : ?>
+    <?php if (!empty($record->{"rubric_{$i}"})) :?>
+    <tbody>
+        <tr>
+            <td>rubric_<?php echo $i ?></td>
+            <td><?php echo $record->name; ?></td>
+            <td><?php echo $record->username; ?></td>
+            <td><?php echo $record->{"rubric_{$i}_updown"}; ?></td>
+            <td><?php echo $record->{"rubric_{$i}"}; ?></td>
+        </tr>
+    </tbody>
+    <?php endif; ?>
+    <?php endforeach; ?>
+    <?php endfor; ?>
 </table>
-
-<?php
-endfor;
-?>
-
-</div>
