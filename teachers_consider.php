@@ -11,7 +11,7 @@ $consider_records = $DB->get_records_sql($consider_records_sql, array($isselfeva
 <table class="table table-striped">
     <thead>
         <tr>
-            <th width="10%">No.</th>
+            <th width="10%">Ru.</th>
             <th width="10%">名前</th>
             <th width="10%">ユーザー名</th>
             <th width="10%">UP_DOWN</th>
@@ -20,10 +20,10 @@ $consider_records = $DB->get_records_sql($consider_records_sql, array($isselfeva
     </thead>
     <?php for ($i=1; $i <= 11; $i++) : ?>
     <?php foreach ($consider_records as $record) : ?>
-    <?php if (!empty($record->{"rubric_{$i}"})) :?>
+    <?php if (!empty($record->{"rubric_{$i}_updown"})) :?>
     <tbody>
         <tr>
-            <td>rubric_<?php echo $i ?></td>
+            <td><?php echo $i ?></td>
             <td><?php echo $record->name; ?></td>
             <td><?php echo $record->username; ?></td>
             <td><?php echo $record->{"rubric_{$i}_updown"}; ?></td>
