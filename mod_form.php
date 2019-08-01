@@ -91,7 +91,7 @@ class mod_isselfeval_mod_form extends moodleform_mod {
         $mform->setDefault('year', (int)date('Y'));
         $mform->addRule('year', null, 'required', null, 'client');
 
-        $mform->addElement('select', 'subject', '科目', array('A' => '情報基礎数学A', 'B' => '情報基礎数学B', 'C' => '情報基礎数学C'));
+        $mform->addElement('select', 'subject', '科目', array('A' => '情報基礎数学A', 'B' => '情報基礎数学B', 'C' => '情報基礎数学C', 'D' => 'ソフトウェア設計特論'));
         $mform->addRule('subject', null, 'required', null, 'client');
 
         $mform->addElement('text', 'times', '回', array('maxlength' => 2, 'minlength' => 1));
