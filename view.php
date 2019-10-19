@@ -97,6 +97,10 @@ else:
         // consider_editのボタンが押されたとき
         require_once("{$CFG->dirroot}/mod/isselfeval/selfeval_consider.php");
 
+    elseif (isset($_POST['reason_edit'])) :
+        // reason_editのボタンが押されたとき
+        require_once("{$CFG->dirroot}/mod/isselfeval/selfeval_reason.php");
+
     elseif (isset($_POST['consider_submit'])) :
         // considerの登録ボタンが押された時
 
@@ -149,8 +153,12 @@ else:
         $consider_flg     = $DB->get_record_sql($consider_flg_sql, array($USER->id, $isselfeval->year, $isselfeval->subject, $isselfeval->times));
         if(!$consider_flg):
             // 初回の場合
+            // reasonの表示
+            require_once("{$CFG->dirroot}/mod/isselfeval/selfeval_reason.php");
+            // --delete--
             // resultの表示
-            require_once("{$CFG->dirroot}/mod/isselfeval/selfeval_result.php");
+            //require_once("{$CFG->dirroot}/mod/isselfeval/selfeval_result.php");
+            // --delete--
         
         else:
             // 2回目以降の場合

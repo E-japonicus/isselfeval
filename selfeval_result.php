@@ -130,6 +130,10 @@ $overall_avg   = tje_average($overall_records);
 <form method="post" action="" name="selfeval_consider_edit">
 	<button class="submit-button" name="consider_edit">自己評価が変化した理由を編集する</button>
 </form>
+<?php else: ?>
+<form method="post" action="" name="selfeval_reason_edit">
+	<button class="submit-button" name="reason_edit">基準を選択した理由を編集する</button>
+</form>
 <?php endif;?>
 
 <!-- レーダーチャートの読み込み -->
