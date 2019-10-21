@@ -1,3 +1,10 @@
+<?php
+//　前回設定した目標の取得
+$setgoal_sql = 'SELECT * FROM {issetgoal_rubrics} WHERE user_id = ? AND issetgoal_id = (SELECT id from {issetgoal} WHERE year = ? AND subject = ? AND times <= ? ORDER BY times DESC LIMIT 1);';
+$setgoal_records = $DB->get_record_sql($setgoal_sql, array($USER->id, $isselfeval->year, $isselfeval->subject, $isselfeval->times));
+?>
+
+
 <link rel="stylesheet" type="text/css" href="./style.css">
 <script type="text/javascript" src="./javascript/jquery-3.3.1.min.js"></script>
 <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
@@ -40,10 +47,13 @@
                     <?php echo get_string("rubric[{$i}]", 'isselfeval')?>
                 </th>
                 <?php for ($j=0; $j < 4; $j++) :?>
+                <!-- 設定した目標のspanを表示 -->
+    			<?php $setgoal_label =  ($setgoal_records->{"rubric_{$i}"} === "{$j}") ? '</br></br><span class="last-time">設定した目標</span>' : '' ?>
                 <td>
                     <label style="display: block; width:100%; height:100%;">
                         <input type="radio" name="rubric_<?php echo $i?>" value="<?php echo $j?>" required>
                         <?php echo get_string("rubric[{$i}]_score{$j}", 'isselfeval') ?>
+                        <?php echo $setgoal_label ?>
                     </label>
                 </td>   
                 <?php endfor; ?>
