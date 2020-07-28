@@ -259,19 +259,45 @@ function xmldb_isselfeval_upgrade($oldversion) {
     //     upgrade_mod_savepoint(true, 2018082504, 'isselfeval');
     // }
 
-    if ($oldversion < 2018110701) {
+    // if ($oldversion < 2018110701) {
 
-        // Define field target to be added to isselfeval.
-        $table = new xmldb_table('isselfeval');
-        $field = new xmldb_field('target', XMLDB_TYPE_TEXT, null, null, null, null, null, 'times');
+    //     // Define field target to be added to isselfeval.
+    //     $table = new xmldb_table('isselfeval');
+    //     $field = new xmldb_field('target', XMLDB_TYPE_TEXT, null, null, null, null, null, 'times');
 
-        // Conditionally launch add field target.
-        if (!$dbman->field_exists($table, $field)) {
-            $dbman->add_field($table, $field);
+    //     // Conditionally launch add field target.
+    //     if (!$dbman->field_exists($table, $field)) {
+    //         $dbman->add_field($table, $field);
+    //     }
+
+    //     // Isselfeval savepoint reached.
+    //     upgrade_mod_savepoint(true, 2018110701, 'isselfeval');
+    // }
+
+    if ($oldversion < 2020071503) {
+
+        // Changing the default of field rubric_1 on table isselfeval_rubrics to drop it.
+        $table = new xmldb_table('isselfeval_rubrics');
+        $field_1 = new xmldb_field('rubric_1', XMLDB_TYPE_INTEGER, '10', null, null, null, null, 'isselfeval_id');
+        $field_2 = new xmldb_field('rubric_2', XMLDB_TYPE_INTEGER, '10', null, null, null, null, 'isselfeval_id');
+        $field_3 = new xmldb_field('rubric_3', XMLDB_TYPE_INTEGER, '10', null, null, null, null, 'isselfeval_id');
+        $field_4 = new xmldb_field('rubric_4', XMLDB_TYPE_INTEGER, '10', null, null, null, null, 'isselfeval_id');
+        $field_5 = new xmldb_field('rubric_5', XMLDB_TYPE_INTEGER, '10', null, null, null, null, 'isselfeval_id');
+        $field_6 = new xmldb_field('rubric_6', XMLDB_TYPE_INTEGER, '10', null, null, null, null, 'isselfeval_id');
+        $field_7 = new xmldb_field('rubric_7', XMLDB_TYPE_INTEGER, '10', null, null, null, null, 'isselfeval_id');
+        $field_8 = new xmldb_field('rubric_8', XMLDB_TYPE_INTEGER, '10', null, null, null, null, 'isselfeval_id');
+        $field_9 = new xmldb_field('rubric_9', XMLDB_TYPE_INTEGER, '10', null, null, null, null, 'isselfeval_id');
+        $field_10 = new xmldb_field('rubric_10', XMLDB_TYPE_INTEGER, '10', null, null, null, null, 'isselfeval_id');
+        $field_11 = new xmldb_field('rubric_11', XMLDB_TYPE_INTEGER, '10', null, null, null, null, 'isselfeval_id');
+
+        // Launch change of default for field rubric_1.
+        for ($i=1; $i <= 11 ; $i++) { 
+            $dbman->change_field_default($table, ${field_.$i});            
         }
 
+
         // Isselfeval savepoint reached.
-        upgrade_mod_savepoint(true, 2018110701, 'isselfeval');
+        upgrade_mod_savepoint(true, 2020071503, 'isselfeval');
     }
 
     return true;

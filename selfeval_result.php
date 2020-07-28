@@ -83,7 +83,7 @@ $overall_avg   = tje_average($overall_records);
 		</tr>
 	</thead>
 	<tbody>
-	<?php for ($i=1; $i <= 11 ; $i++): ?>
+	<?php for ($i=1; $i <= 8 ; $i++): ?>
 		<tr>
 			<th>
 				<?php echo get_string("rubric[{$i}]", 'isselfeval') ?>

@@ -7,7 +7,7 @@ $last_time_records = $DB->get_record_sql($last_sql, array($USER->id, $isselfeval
 
 $up_rubrics = array();
 $down_rubrics = array();
-for ($i=1; $i <= 11; $i++) { 
+for ($i=1; $i <= 8; $i++) { 
     if ($this_time_records->{"rubric_{$i}"} > $last_time_records->{"rubric_{$i}"}) {
         // 自己評価結果が上昇した評価規準
         $up_rubrics[] = $i;

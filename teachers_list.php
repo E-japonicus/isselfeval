@@ -23,9 +23,6 @@ $rubric_records = $DB->get_records_sql(
           <th>ﾙｰﾌﾞﾘｯｸ[6]</th>
           <th>ﾙｰﾌﾞﾘｯｸ[7]</th>
           <th>ﾙｰﾌﾞﾘｯｸ[8]</th>
-          <th>ﾙｰﾌﾞﾘｯｸ[9]</th>
-          <th>ﾙｰﾌﾞﾘｯｸ[10]</th>
-          <th>ﾙｰﾌﾞﾘｯｸ[11]</th>
         </tr>
       </thead>
       <tbody>
@@ -35,7 +32,7 @@ $rubric_records = $DB->get_records_sql(
             <th><?php echo $record->username  ; ?></th>
 
             <?php
-            for ($i=1; $i <= 11; $i++) {
+            for ($i=1; $i <= 8; $i++) {
               echo "<th>".$record->{"rubric_{$i}"}."</th>";
             }
             ?>

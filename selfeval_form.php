@@ -41,7 +41,7 @@ $setgoal_records = $DB->get_record_sql($setgoal_sql, array($USER->id, $isselfeva
             </tr>
         </thead>
         <tbody>
-        <?php for ($i=1; $i <= 11 ; $i++): ?>
+        <?php for ($i=1; $i <= 8 ; $i++): ?>
             <tr height="150">
                 <th>
                     <?php echo get_string("rubric[{$i}]", 'isselfeval')?>

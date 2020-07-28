@@ -18,7 +18,7 @@ $consider_records = $DB->get_records_sql($consider_records_sql, array($isselfeva
             <th width="60%">理由</th>
         </tr>
     </thead>
-    <?php for ($i=1; $i <= 11; $i++) : ?>
+    <?php for ($i=1; $i <= 8; $i++) : ?>
     <?php foreach ($consider_records as $record) : ?>
     <?php if (!empty($record->{"rubric_{$i}_updown"})) :?>
     <tbody>

@@ -1,4 +1,4 @@
-<?php for ($i=1; $i <= 11; $i++) :?>
+<?php for ($i=1; $i <= 8; $i++) :?>
 <?php
 $sql = "SELECT rubric_{$i} as rubric_{$i}_score, count(*) as score_count from {isselfeval_rubrics} WHERE isselfeval_id = ? GROUP BY rubric_{$i}";
 $overall_records = $DB->get_records_sql($sql, array($isselfeval->id));
